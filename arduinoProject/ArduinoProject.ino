@@ -1,8 +1,8 @@
 #include <LiquidCrystal_I2C.h>
 #include "DHT.h"
 
-#define DHTPIN A0 // pino que estamos conectado
-#define DHTTYPE DHT11 // DHT 11
+#define DHTPIN A0
+#define DHTTYPE DHT11
 
 LiquidCrystal_I2C lcd(0x27,16,2);
 DHT dht(DHTPIN, DHTTYPE);
@@ -10,26 +10,29 @@ DHT dht(DHTPIN, DHTTYPE);
 const int VENTILADOR = 3;
 const int UMIDIFICADOR = 2;
 
+bool isModoAutomatico;
+const float temperaturaLigarVentilador = 27; 
+const float umidadeLigarUmidificador = 60; 
+
 float temperatura; 
 float umidade; 
 int contador = 0;
-String input;
+String serialInput;
  
 void setup()
 {  
-    Serial.begin(9600);
-    lcd.init();  
-    dht.begin();
-    pinMode(VENTILADOR, OUTPUT);
-    pinMode(UMIDIFICADOR, OUTPUT);        
-    desligarVentilador();
-   desligarUmidificador();  
-    
+  Serial.begin(9600);
+  lcd.init();  
+  dht.begin();
+  pinMode(VENTILADOR, OUTPUT);
+  pinMode(UMIDIFICADOR, OUTPUT);        
+  desligarVentilador();
+  desligarUmidificador();      
+  isModoAutomatico = false;
 }
  
 void loop()
-{ 
-         
+{          
   lcd.setBacklight(HIGH);
   umidade = dht.readHumidity();
   temperatura = dht.readTemperature();
@@ -44,29 +47,30 @@ void loop()
   if(contador == 10) {
     contador = 0;
   }  
-//
-//  if (temperatura > 28){
-//    digitalWrite(pinLed, HIGH); 
-//  }else{
-//    digitalWrite(pinLed, LOW);  
-//  }  
+
+  if (isModoAutomatico){
+    ativaModoAutomatico();
+  }
   
-  if(contador == 1 || contador == 2){
+  if(contador == 1){
     printMainOnDisplay();        
   }
   else{
     printDataOnDisplay(temperatura, umidade);          
   }
-  delayEmSegundos(10);
+  delayEmSegundos(5);
 }
-
 
 void printMainOnDisplay(){
     lcd.clear();        
     lcd.setCursor(1, 0);  
-    lcd.print("FIAP IOT 35SCJ");
-    lcd.setCursor(2, 1);
-    lcd.print("Bruno Farias");           
+    lcd.print("FIAP IoT");
+    lcd.setCursor(0, 1);
+    if (isModoAutomatico){
+      lcd.print("Modo Auto Ativo");             
+    }else{
+      lcd.print("Modo Auto Inativ");             
+    }        
 }
 
 void printDataOnDisplay(float temperatura, float umidade){
@@ -82,26 +86,36 @@ void printDataOnSerial(float temperatura, float umidade){
 }
 
 void processaDadosRecebidosSerial(){
-    input = Serial.readStringUntil(';');  
+    serialInput = Serial.readStringUntil(';');  
 
-    if (input == "LIGAR_VENTILADOR"){               
+    if (serialInput == "LIGAR_VENTILADOR"){               
       ligarVentilador(); 
       return;
     }
     
-    if (input == "DESLIGAR_VENTILADOR"){
+    if (serialInput == "DESLIGAR_VENTILADOR"){
       desligarVentilador(); 
       return;
     }
 
-    if (input == "LIGAR_UMIDIFICADOR"){               
+    if (serialInput == "LIGAR_UMIDIFICADOR"){               
       ligarUmidificador(); 
       return;
     }
     
-    if (input == "DESLIGAR_UMIDIFICADOR"){
+    if (serialInput == "DESLIGAR_UMIDIFICADOR"){
       desligarUmidificador(); 
-      return;
+      return; 
+    }
+
+     if (serialInput == "ATIVAR_MODO_AUTOMATICO"){
+      isModoAutomatico = true;      
+      return; 
+    }
+
+     if (serialInput == "DESATIVAR_MODO_AUTOMATICO"){
+      isModoAutomatico = false;
+      return; 
     }
 
 }
@@ -124,4 +138,19 @@ void desligarUmidificador(){
 
 void delayEmSegundos(int segundos){   
   delay(segundos * 1000);
+}
+
+void ativaModoAutomatico(){
+  if(temperatura > temperaturaLigarVentilador ){
+    ligarVentilador();
+  }else{
+    desligarVentilador(); 
+  }
+  
+  if (umidade > umidadeLigarUmidificador ){
+    ligarUmidificador();
+  }
+  else{
+    desligarUmidificador();
+  }  
 }
