@@ -23,9 +23,10 @@ class GeradorMensagemInicialService {
      */
     private fun criaLayoutBotoesMenu(): List<Array<String>> {
         return listOf(
-                arrayOf("Temperatura do ambiente", "Umidade do Ambiente"),
-                arrayOf("Ligar Ventilador", "Desligar Ventilador"),
-                arrayOf("Ligar Umidificador", "Desligar Umidificador")
+                arrayOf("Obter Temperatura", "Obter Umidade"),
+                arrayOf("Liga Ventilador", "Desliga Ventilador"),
+                arrayOf("Liga Umidificador", "Desliga Umidificador"),
+                arrayOf("Ativar modo automatico", "Desativar modo automatico")
         )
     }
 }

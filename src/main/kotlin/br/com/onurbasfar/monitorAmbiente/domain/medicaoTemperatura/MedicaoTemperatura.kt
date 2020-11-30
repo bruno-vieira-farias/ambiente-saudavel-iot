@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
 /**
- *  Classe que representa a medição de temperatura em um determinado momento.
+ *  Representa a medição de temperatura em um determinado instante.
  */
 @Document
 class MedicaoTemperatura(

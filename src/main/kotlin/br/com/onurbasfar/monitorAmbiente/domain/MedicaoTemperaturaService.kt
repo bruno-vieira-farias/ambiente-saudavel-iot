@@ -5,6 +5,7 @@ import br.com.onurbasfar.monitorAmbiente.domain.medicaoTemperatura.MedicaoTemper
 import br.com.onurbasfar.monitorAmbiente.domain.medicaoTemperatura.MedicaoTemperaturaRepository
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class MedicaoTemperaturaService(
