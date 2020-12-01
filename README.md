@@ -17,7 +17,7 @@ Um projeto com objetivo de manter o ambiente com uma temperatura e umidade adequ
 - Display LCD 16x2.
 - Módulo Adaptador I2C Para Display LCD.
 - Sensor DHT11. (Temperatura e Umidade).
-_ Módulo Rele 2 canais.
+- Módulo Rele 2 canais.
 - Cabos 0,2mm (Jumpers).
 - Cabos 2,5mm.
 - Tomada Fêmea.
