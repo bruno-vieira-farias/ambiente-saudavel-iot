@@ -2,6 +2,10 @@
 
 Um projeto com objetivo de manter o ambiente com uma temperatura e umidade adequada e controle remoto dos equipamentos.
 
+# Vídeo Apresentação
+![Watch the video](https://youtu.be/497JHrPEmwQ)
+
+
 ![Topologia_projeto](/doc/images/TopologiaProjeto.png)
 
 ![Esquema_Fisico_Detalhado](/doc/images/EsquemaFisicoDetalhado.png)
@@ -20,8 +24,6 @@ _ Módulo Rele 2 canais.
 
 ### Telegram.
 Bot [Telegram](https://telegram.org/) que fornece informações relevantes para investidores.
-- TODO - Colocar um print da imagem do bot.
-
 
 ### Setup
 - Crie um [Telegram bot](https://core.telegram.org/bots).
@@ -32,6 +34,9 @@ Bot [Telegram](https://telegram.org/) que fornece informações relevantes para 
 telegram-bot.token={seuTelegramToken}
 ...
 ```
+### Bot em execução.
+![Bot_Telegram](/doc/images/botImage.jpg)
+
 ### Run
 Execute na raiz do projeto a task `bootRun` do gradle.
 
@@ -42,6 +47,7 @@ Execute na raiz do projeto a task `bootRun` do gradle.
 
 ### Comandos válidos
 - `/start`
+- `Obter Temperatura`
 - `Obter Umidade`
 - `Ligar Ventilador`
 - `Desligar Ventilador`
