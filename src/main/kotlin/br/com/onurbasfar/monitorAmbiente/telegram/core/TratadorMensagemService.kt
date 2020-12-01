@@ -23,31 +23,31 @@ class TratadorMensagemService(
             }
             "Obter Umidade" -> {
                 val medicaoUmidade = medicaoUmidadeRepository.findTopByOrderByDataCriacaoDesc()
-                listOf(Resposta("A umidade do ambiente ẽ de ${medicaoUmidade.valor}%."))
+                listOf(Resposta("A umidade do ambiente é de ${medicaoUmidade.valor}%."))
             }
             "Ligar Ventilador" -> {
                 arduinoService.enviaComando(ComandoArduino.LIGAR_VENTILADOR)
-                listOf(Resposta("Ligando..."))
+                listOf(Resposta("Ligando Ventilador..."))
             }
             "Desligar Ventilador" -> {
                 arduinoService.enviaComando(ComandoArduino.DESLIGAR_VENTILADOR)
-                listOf(Resposta("Desligando..."))
+                listOf(Resposta("Desligando Ventilador..."))
             }
             "Ligar Umidificador" -> {
                 arduinoService.enviaComando(ComandoArduino.LIGAR_UMIDIFICADOR)
-                listOf(Resposta("Ligando..."))
+                listOf(Resposta("Ligando Umidificador..."))
             }
             "Desligar Umidificador" -> {
                 arduinoService.enviaComando(ComandoArduino.DESLIGAR_UMIDIFICADOR)
-                listOf(Resposta("Desligando..."))
+                listOf(Resposta("Desligando Umidificador..."))
             }
             "Ativar modo automatico" -> {
                 arduinoService.enviaComando(ComandoArduino.ATIVAR_MODO_AUTOMATICO)
-                listOf(Resposta("Desligando..."))
+                listOf(Resposta("Ativando Modo Automático..."))
             }
             "Desativar modo automatico" -> {
                 arduinoService.enviaComando(ComandoArduino.DESATIVAR_MODO_AUTOMATICO)
-                listOf(Resposta("Desligando..."))
+                listOf(Resposta("Desativando Modo Automático..."))
             }
             else -> {
                 listOf(Resposta("desculpe, não entendi."))

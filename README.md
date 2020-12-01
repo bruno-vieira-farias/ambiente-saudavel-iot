@@ -2,10 +2,8 @@
 
 Um projeto com objetivo de ....
 
-### Topologia do Projeto
 ![Topologia_projeto](/doc/images/TopologiaProjeto.png)
 
-### Esquema Físico Detalhado
 ![Esquema_Fisico_Detalhado](/doc/images/EsquemaFisicoDetalhado.png)
 
 ### Materiais Utilizados.
@@ -42,16 +40,12 @@ Execute na raiz do projeto a task `bootRun` do gradle.
 - Linux / Mac
   `./gradlew bootRun`
 
-### Tela Inicial 
-![Tela Inicial](/images/telaInicial.png)
-
-
 ### Comandos válidos
 - `/start`
-- `Taxa selic hoje`
-- `Taxa selic acumulada nos últimos 30 dias`
-- `Rendimento da poupanca nos últimos 30 dias`
-- `Rendimento da poupança acumulado nos últimos 12 meses`
-
-### JavaDoc
-- Disponível [aqui](https://onurbasfar.github.io/InvestiBot/doc/) ou no diretorio /doc do projeto.
+- `Obter Umidade`
+- `Ligar Ventilador`
+- `Desligar Ventilador`
+- `Ligar Umidificador`
+- `Desligar Umidificador`
+- `Ativar modo automatico`
+- `Desativar modo automatico`
