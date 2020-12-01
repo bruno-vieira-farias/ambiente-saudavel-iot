@@ -1,6 +1,6 @@
 # Ambiente Saudável
 
-Um projeto com objetivo de ....
+Um projeto com objetivo de manter o ambiente com uma temperatura e umidade adequada e controle remoto dos equipamentos.
 
 ![Topologia_projeto](/doc/images/TopologiaProjeto.png)
 
