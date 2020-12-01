@@ -2,11 +2,13 @@
 
 Um projeto com objetivo de manter o ambiente com uma temperatura e umidade adequada e controle remoto dos equipamentos.
 
-# Vídeo Apresentação
+### Vídeo Apresentação
 [Clique_Aqui](https://youtu.be/497JHrPEmwQ)  
 
+### Topologia do Projeto
 ![Topologia_projeto](/doc/images/TopologiaProjeto.png)
 
+### Esquema Físico Detalhado
 ![Esquema_Fisico_Detalhado](/doc/images/EsquemaFisicoDetalhado.png)
 
 ### Materiais Utilizados.
